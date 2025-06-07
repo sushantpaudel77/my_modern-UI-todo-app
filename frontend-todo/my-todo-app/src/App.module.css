@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+.appContainer {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.95) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.95) 0%, transparent 40%),
+    linear-gradient(135deg, #05050a 0%, #12122b 25%, #101533 50%, #05050a 100%);
+  color: #ddddee;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.backgroundGlow {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(147, 51, 234, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.06) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(84, 105, 141, 0.04) 0%, transparent 25%);
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(30px, -20px) rotate(240deg);
+  }
+}
+
+.mainContent {
+  width: 100%;
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(147, 51, 234, 0.3) 25%, 
+    rgba(236, 72, 153, 0.3) 75%, 
+    transparent 100%
+  );
+  border-radius: 1px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #ccccee;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 15px rgba(70, 30, 130, 0.25);
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.7) 0%, 
+    rgba(236, 72, 153, 0.65) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(147, 51, 234, 0.25), 
+    rgba(236, 72, 153, 0.25));
+  border-radius: 1px;
+  opacity: 0.45;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: rgba(220, 220, 255, 0.75);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.statCard {
+  background: rgba(15, 15, 25, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.03) 0%, 
+    rgba(236, 72, 153, 0.02) 50%, 
+    rgba(59, 130, 246, 0.015) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 16px;
+}
+
+.statCard:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(147, 51, 234, 0.15);
+  box-shadow: 
+    0 10px 28px rgba(147, 51, 234, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+.statCard:hover::before {
+  opacity: 0.7;
+}
+
+.statNumber {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #ddddee;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover .statNumber {
+  transform: scale(1.05);
+  color: rgba(147, 51, 234, 0.8);
+  text-shadow: 0 2px 12px rgba(147, 51, 234, 0.15);
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(220, 220, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.statCard:hover .statLabel {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.todoContainer::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .appContainer {
+    padding: 1rem 0.75rem;
+  }
+
+  .mainContent {
+    gap: 2rem;
+  }
+
+  .header {
+    padding: 1.5rem 0;
+  }
+
+  .title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .statsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .statCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .statNumber {
+    font-size: 1.9rem;
+  }
+
+  .statLabel {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .appContainer {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 10vw, 2.5rem);
+  }
+
+  .statsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .statCard {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .statNumber {
+    font-size: 1.7rem;
+  }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+  .appContainer {
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.95) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.95) 0%, transparent 40%),
+      linear-gradient(135deg, #05050a 0%, #12122b 25%, #101533 50%, #05050a 100%);
+  }
+}

@@ -1,0 +1,156 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(15, 15, 23, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.item:hover {
+  background: rgba(15, 15, 23, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.completed {
+  opacity: 0.6;
+}
+
+.toggleButton {
+  flex-shrink: 0;
+  padding: 0.3rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.toggleButton:hover {
+  transform: scale(1.1);
+}
+
+.checkboxChecked {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+}
+
+.checkboxUnchecked {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.checkboxUnchecked:hover {
+  border-color: rgba(147, 197, 253, 0.8);
+  background: rgba(147, 197, 253, 0.1);
+  box-shadow: 0 0 10px rgba(147, 197, 253, 0.3);
+}
+
+.checkIcon {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: white;
+}
+
+.text {
+  color: white;
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.completed .text {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.deleteButton {
+  flex-shrink: 0;
+  padding: 0.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteButton:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+
+.item:hover .deleteButton {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.deleteButton:active {
+  transform: scale(0.95);
+}
+
+.deleteIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: currentColor;
+}
+
+@media (max-width: 640px) {
+  .item {
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+
+  .checkboxChecked,
+  .checkboxUnchecked {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .checkIcon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .deleteButton {
+    padding: 0.5rem;
+  }
+
+  .deleteIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
