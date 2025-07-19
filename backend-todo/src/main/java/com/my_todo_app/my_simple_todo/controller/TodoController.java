@@ -13,6 +13,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/todos")
+// Note: @CrossOrigin is useful for local dev but weakens security by allowing cross-origin requests.
+// Avoid using this in production without strict origin control to prevent CSRF or data leaks.
+// Warn: Not the best practice!!!
 @CrossOrigin(origins = "http://localhost:5173")
 public class TodoController {
 
